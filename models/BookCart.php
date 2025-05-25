@@ -35,13 +35,15 @@ class BookCart extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'author', 'title', 'status_id', 'sharing_option'], 'required'],
-            [['user_id', 'status_id', 'sharing_option'], 'integer'],
+            [['user_id', 'author', 'title', 'status_id'], 'required'],
+            [['user_id', 'author', 'title', 'status_id'], 'required'],
+            [['user_id', 'status_id', 'sharing', 'to_lib'], 'integer'],
             [['reason'], 'string'],
             [['created_at'], 'safe'],
             [['author', 'title'], 'string', 'max' => 255],
             [['status_id'], 'exist', 'skipOnError' => true, 'targetClass' => Status::class, 'targetAttribute' => ['status_id' => 'id']],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['user_id' => 'id']],
+            [['sharing', 'to_lib'], 'required', 'requiredValue' => 1, 'message' => "надо отметить"],
         ];
     }
 
@@ -56,7 +58,8 @@ class BookCart extends \yii\db\ActiveRecord
             'author' => 'Автор книги',
             'title' => 'Название книги',
             'status_id' => 'Статус карточки',
-            'sharing_option' => 'Дополнительная опция',
+            'sharing' => 'Дополнительная опция',
+            'to_lib' => 'в библиотеку',
             'reason' => 'Причина отклонения',
             'created_at' => 'Время создания карточки',
         ];
@@ -82,12 +85,12 @@ class BookCart extends \yii\db\ActiveRecord
         return $this->hasOne(User::class, ['id' => 'user_id']);
     }
 
-    public function getSharingOptionText()
-    {
-        $options = [
-            1 => 'Готов поделиться',
-            2 => 'Хочу в свою библиотеку'
-        ];
-        return $options[$this->sharing_option];
-    }
+    // public function getSharingOptionText()
+    // {
+    //     $options = [
+    //         1 => 'Готов поделиться',
+    //         2 => 'Хочу в свою библиотеку'
+    //     ];
+    //     return $options[$this->sharing_option];
+    // }
 }

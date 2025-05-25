@@ -99,6 +99,14 @@
     }
 }
 
+@media (max-width: 384px) {
+    .carts-account .card{
+         
+        margin: 0 auto; 
+        display: block; 
+    }
+}
+
 .alert-block .alert {
     position: absolute;
     top: 100%; 

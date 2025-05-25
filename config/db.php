@@ -4,7 +4,7 @@
 if (str_contains(__DIR__, "home")) {
     return [
         'class' => 'yii\db\Connection',
-        'dsn' => 'mysql:host=MariaDB-11.2;dbname=korochki',
+        'dsn' => 'mysql:host=MariaDB-11.2;dbname=bookvoed',
         'username' => 'root',
         'password' => '',
         'charset' => 'utf8',

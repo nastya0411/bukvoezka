@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="book-cart-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h3><?= Html::encode($this->title) ?></h3>
 
     <p>
         <?= Html::a('Назад', ['index', 'id' => $model->id], ['class' => 'btn btn-outline-primary']) ?>
@@ -32,8 +32,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => Status::getStatuses()[$model->status_id]
             ],
             [
-                'attribute' => 'sharing_option',
-                'value' => $model->getSharingOptionText()
+                'attribute' => 'sharing',
+                'value' => "отмечено"
+            ],
+            [
+                'attribute' => 'to_lib',
+                'value' => "отмечено"
             ],
 
             [

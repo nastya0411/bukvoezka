@@ -91,9 +91,8 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
             <?php endif ?>
             <div class="alert-block position-relative d-flex justify-content-end">
                 <?= Alert::widget() ?>
-                <?= $content ?>
             </div>
-
+            <?= $content ?>
         </div>
     </main>
 

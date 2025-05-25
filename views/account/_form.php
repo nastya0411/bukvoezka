@@ -16,9 +16,8 @@ use yii\bootstrap5\ActiveForm;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'sharing_option')->radioList([
-        1 => 'Готов поделиться',
-        2 => 'Хочу в свою библиотеку'])?>
+    <?= $form->field($model, 'sharing')->radio()?>
+    <?= $form->field($model, 'to_lib')->radio()?>
 
     <div class="form-group">
         <?= Html::submitButton('отправить', ['class' => 'btn btn-outline-primary']) ?>
